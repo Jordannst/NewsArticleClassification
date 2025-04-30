@@ -29,7 +29,7 @@
                 <div class="mb-3">
                     <label for="method" class="block text-gray-200 font-semibold mb-2 text-sm">Choose Prediction Method:</label>
                     <select id="method" name="method" class="w-full p-2 bg-gray-800 border border-gray-600 rounded text-gray-100 text-sm">
-                        <option value="tfidf" {% if method == 'tfidf' %}selected{% endif %}>TF-IDF + Naive Bayes</option>
+                        <option value="tfidf" {% if method == 'tfidf' %}selected{% endif %}>TF-IDF (MultinomialNB)</option>
                         <option value="gemini" {% if method == 'gemini' %}selected{% endif %}>Gemini (LLM)</option>
                     </select>
                 </div>
