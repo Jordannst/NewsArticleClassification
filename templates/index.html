@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>News Category Prediction</title>
-    <!-- Link CDN Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <style>
         .glass-effect {
             backdrop-filter: blur(10px);
@@ -14,39 +13,39 @@
     </style>
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans leading-normal tracking-normal">
-    <div class="flex items-center justify-center min-h-screen">
-        <div class="max-w-sm w-full p-3 rounded-lg glass-effect border border-gray-700 shadow-md">
-            <h1 class="text-2xl font-bold text-center mb-4">News Category Prediction</h1>
+    <div class="flex items-center justify-center min-h-screen px-4">
+        <div class="w-full max-w-xl min-h-[80vh] p-6 rounded-2xl glass-effect border border-gray-700 shadow-lg">
+            <h1 class="text-3xl font-bold text-center mb-8">News Category Prediction</h1>
 
             <form method="POST" action="/" id="prediction-form">
-                <div class="mb-3">
-                    <label for="news_description" class="block text-gray-200 font-semibold mb-2 text-sm">Enter News Description:</label>
+                <div class="mb-6">
+                    <label for="news_description" class="block text-gray-200 font-semibold mb-2 text-base">Enter News Description:</label>
                     <textarea id="news_description" name="news_description" 
-                        class="w-full p-3 bg-gray-800 border border-gray-600 rounded text-gray-100 text-sm" 
+                        class="w-full p-4 bg-gray-800 border border-gray-600 rounded-lg text-gray-100 text-sm" 
                         rows="6" required>{{ input_text if input_text else '' }}</textarea>
                 </div>
 
-                <div class="mb-3">
-                    <label for="method" class="block text-gray-200 font-semibold mb-2 text-sm">Choose Prediction Method:</label>
-                    <select id="method" name="method" class="w-full p-2 bg-gray-800 border border-gray-600 rounded text-gray-100 text-sm">
+                <div class="mb-6">
+                    <label for="method" class="block text-gray-200 font-semibold mb-2 text-base">Choose Prediction Method:</label>
+                    <select id="method" name="method" class="w-full p-3 bg-gray-800 border border-gray-600 rounded-lg text-gray-100 text-sm">
                         <option value="tfidf" {% if method == 'tfidf' %}selected{% endif %}>TF-IDF (MultinomialNB)</option>
                         <option value="gemini" {% if method == 'gemini' %}selected{% endif %}>Gemini (LLM)</option>
                     </select>
                 </div>
 
-                <button type="submit" id="submit-button" class="w-full py-2 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 flex items-center justify-center">
+                <button type="submit" id="submit-button" class="w-full py-3 bg-blue-600 text-white rounded-lg text-base hover:bg-blue-700 flex items-center justify-center">
                     <span id="button-text">Check Category</span>
-                    <svg id="loading-spinner" class="hidden w-4 h-4 ml-2 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg id="loading-spinner" class="hidden w-5 h-5 ml-2 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
                     </svg>
                 </button>
             </form>
 
-            {% if predicted_categories %} 
-            <div class="mt-4 text-center p-3 bg-green-900 text-green-300 rounded">
+            {% if predicted_categories %}
+            <div class="mt-8 text-center p-5 bg-green-900 text-green-300 rounded-lg">
                 <h2 class="text-lg font-semibold">Predicted Categories:</h2>
-                <ul class="text-sm">
+                <ul class="text-sm mt-2">
                     {% for category in predicted_categories %}
                         <li>{{ category }}</li>
                     {% endfor %}
@@ -56,7 +55,6 @@
         </div>
     </div>
 
-    <!-- JavaScript -->
     <script>
         const form = document.getElementById('prediction-form');
         const button = document.getElementById('submit-button');
@@ -64,9 +62,9 @@
         const spinner = document.getElementById('loading-spinner');
 
         form.addEventListener('submit', function () {
-            buttonText.classList.add('hidden'); // Sembunyikan teks tombol
-            spinner.classList.remove('hidden'); // Tampilkan spinner
-            button.setAttribute('disabled', true); // Nonaktifkan tombol
+            buttonText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+            button.setAttribute('disabled', true);
         });
     </script>
 </body>

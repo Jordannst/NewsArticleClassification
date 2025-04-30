@@ -22,7 +22,7 @@ with open('model/tfidf_vectorizer.pkl', 'rb') as f:
     tfidf = joblib.load(f)  # TF-IDF vectorizer
 
 # Konfigurasi API Gemini dengan API key
-genai.configure(api_key="AIzaSyBkzMugpGoSexLTGeRpfQ1HKCoF6DDdcyU") 
+genai.configure(api_key="YOUR_API_KEY") 
 gemini_model = genai.GenerativeModel("gemini-1.5-flash")  # Memilih model generatif Gemini versi 1.5
 
 # Daftar kategori berita yang tersedia
